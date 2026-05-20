@@ -21,3 +21,6 @@ stud123*
 Pay Here Sandbox 
 Email : nithila0411@gmail.com
 Password : G5e.zd4CrYyuMwQ
+
+Merchant ID - 1235867
+Merchant Secret - “NDA0NzYzMzU4NDIwNjg2MDgzNjE0MjAyNjIwMDY2MTQ0NTQ3MDk1OQ==”
