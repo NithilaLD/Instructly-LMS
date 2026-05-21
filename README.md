@@ -24,3 +24,6 @@ Password : G5e.zd4CrYyuMwQ
 
 Merchant ID - 1235867
 Merchant Secret - “NDA0NzYzMzU4NDIwNjg2MDgzNjE0MjAyNjIwMDY2MTQ0NTQ3MDk1OQ==”
+
+Next Development 
+Payment Gateway & New Admin Email with the lms name
