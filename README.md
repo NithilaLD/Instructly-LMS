@@ -22,4 +22,6 @@ Pay Here Sandbox - https://sandbox.payhere.lk/merchant/dashboard/home?returnUrl=
 Email : nithila0411@gmail.com<br>
 Password : G5e.zd4CrYyuMwQ<br>
 
-NGROX - https://ngrok.com/
+NGROX - https://dashboard.ngrok.com/get-started/setup/windows/<br>
+
+Sample Cards : https://support.payhere.lk/sandbox-and-testing
