@@ -24,4 +24,8 @@ Password : G5e.zd4CrYyuMwQ<br>
 
 NGROX - https://dashboard.ngrok.com/get-started/setup/windows/<br>
 
-Sample Cards : https://support.payhere.lk/sandbox-and-testing
+Sample Cards : https://support.payhere.lk/sandbox-and-testing<br>
+
+Official Email <br>
+email : instructlylms@gmail.com<br>
+password : ;1M^5PyL50?a:6yR<br>
