@@ -1,1 +1,1 @@
-# Instructly-LMS
+# Instructly LMS
