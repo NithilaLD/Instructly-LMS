@@ -1,0 +1,222 @@
+﻿<?php
+session_start();
+include('../config/config.php');
+include('../config/checklogin.php');
+admin();
+require_once('../config/codeGen.php');
+
+/* Update Default Company Settings */
+if (isset($_POST['update_company_profile'])) {
+    //Error Handling and prevention of posting double entries
+    $error = 0;
+
+    if (isset($_POST['sys_id']) && !empty($_POST['sys_id'])) {
+        $sys_id = mysqli_real_escape_string($mysqli, trim($_POST['sys_id']));
+    } else {
+        $error = 1;
+        $err = "ID Cannot Be Empty";
+    }
+    if (isset($_POST['sys_name']) && !empty($_POST['sys_name'])) {
+        $sys_name = mysqli_real_escape_string($mysqli, trim($_POST['sys_name']));
+    } else {
+        $error = 1;
+        $err = "Sys Name Cannot Be Empty";
+    }
+    if (isset($_POST['sys_tagline']) && !empty($_POST['sys_tagline'])) {
+        $sys_tagline = $_POST['sys_tagline'];
+    } else {
+        $error = 1;
+        $err = "System Tagline Cannot Be Empty";
+    }
+
+
+    /*  $cc_dpic = $_FILES["cc_dpic"]["name"];
+    move_uploaded_file($_FILES["cc_dpic"]["tmp_name"], "../public/sys_data/uploads/courses/" . $_FILES["cc_dpic"]["name"]); */
+
+    if (!$error) {
+        $query = "UPDATE lms_sys_setttings  SET sys_name = ?, sys_tagline =? WHERE sys_id =?";
+        $stmt = $mysqli->prepare($query);
+        $rc = $stmt->bind_param('sss', $sys_name, $sys_tagline, $sys_id);
+        $stmt->execute();
+        if ($stmt) {
+            $success = "Details Updated" && header("refresh:1; url=settings.php");
+        } else {
+            $info = "Please Try Again Or Try Later";
+        }
+    }
+}
+
+
+/* Update Default System Settings */
+if (isset($_POST['update_company_logo'])) {
+    //Error Handling and prevention of posting double entries
+    $error = 0;
+
+    if (isset($_POST['sys_id']) && !empty($_POST['sys_id'])) {
+        $sys_id = mysqli_real_escape_string($mysqli, trim($_POST['sys_id']));
+    } else {
+        $error = 1;
+        $err = "ID Cannot Be Empty";
+    }
+
+    $sys_logo = $_FILES["sys_logo"]["name"];
+    move_uploaded_file($_FILES["sys_logo"]["tmp_name"], "../public/sys_data/logo/" . $_FILES["sys_logo"]["name"]);
+
+    if (!$error) {
+        $query = "UPDATE lms_sys_setttings  SET sys_logo = ? WHERE sys_id =?";
+        $stmt = $mysqli->prepare($query);
+        $rc = $stmt->bind_param('ss', $sys_logo, $sys_id);
+        $stmt->execute();
+        if ($stmt) {
+            $success = "Details Updated" && header("refresh:1; url=settings.php");
+        } else {
+            $info = "Please Try Again Or Try Later";
+        }
+    }
+}
+
+
+/* Privacy Policy And Licenseses */
+if (isset($_POST['update_company_pp'])) {
+    //Error Handling and prevention of posting double entries
+    $error = 0;
+
+    if (isset($_POST['sys_id']) && !empty($_POST['sys_id'])) {
+        $sys_id = mysqli_real_escape_string($mysqli, trim($_POST['sys_id']));
+    } else {
+        $error = 1;
+        $err = "ID Cannot Be Empty";
+    }
+    if (isset($_POST['sys_license']) && !empty($_POST['sys_license'])) {
+        $sys_license = $_POST['sys_license'];
+    } else {
+        $error = 1;
+        $err = "Sys License Cannot Be Empty";
+    }
+    if (isset($_POST['sys_privacy_policy']) && !empty($_POST['sys_privacy_policy'])) {
+        $sys_privacy_policy = $_POST['sys_privacy_policy'];
+    } else {
+        $error = 1;
+        $err = "System Privacy Policy Cannot Be Empty";
+    }
+
+    if (!$error) {
+        $query = "UPDATE lms_sys_setttings  SET sys_license = ?, sys_privacy_policy =? WHERE sys_id =?";
+        $stmt = $mysqli->prepare($query);
+        $rc = $stmt->bind_param('sss', $sys_license, $sys_privacy_policy, $sys_id);
+        $stmt->execute();
+        if ($stmt) {
+            $success = "Details Updated" && header("refresh:1; url=settings.php");
+        } else {
+            $info = "Please Try Again Or Try Later";
+        }
+    }
+}
+
+/* Persist System Settings  */
+$ret = "SELECT * FROM `lms_sys_setttings` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($sys = $res->fetch_object()) {
+    require_once('../partials/head.php');
+?>
+
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <div class="wrapper">
+            <!-- Navbar -->
+            <?php require_once('../partials/navbar.php'); ?>
+            <!-- /.navbar -->
+
+            <!-- Main Sidebar Container -->
+            <?php require_once('../partials/sidebar.php'); ?>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <!-- ./row -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-lg-12">
+                                            <div class="card card-warning card-tabs">
+                                                <div class="card-header p-0 pt-1" style="background: #84B7F9 !important;">
+                                                    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab">Company Details</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab">Company Logo</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="tab-content" id="custom-tabs-one-tabContent">
+                                                        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel">
+                                                            <form method="post" enctype="multipart/form-data">
+                                                                <div class="row">
+                                                                    <div class=" col-md-12">
+                                                                        <label for="sys_name">Company Name</label>
+                                                                        <input type="text" name="sys_name" value="<?php echo $sys->sys_name; ?>" required class="form-control" id="sys_name" autocomplete="name">
+                                                                        <input type="hidden" name="sys_id" value="<?php echo $sys->sys_id; ?>" required class="form-control" id="sys_id">
+
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="sys_tagline">Company Tagline</label>
+                                                                        <textarea type="text" name="sys_tagline" class="form-control" id="sys_tagline" autocomplete="on"><?php echo $sys->sys_tagline; ?></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="text-right">
+                                                                    <button type="submit" name="update_company_profile" class="btn btn-outline-warning">Submit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel">
+                                                            <form method="post" enctype="multipart/form-data" role="form">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-12">
+                                                                            <b>Select File</b><br><br>
+                                                                            <div class="input-group">
+                                                                                <div class="custom-file">
+                                                                                    <input required name="sys_logo" type="file" class="custom-file-input" id="exampleInputFile">
+                                                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input type="hidden" name="sys_id" value="<?php echo $sys->sys_id; ?>" required class="form-control" id="sys_id">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-right">
+                                                                    <button type="submit" name="update_company_logo" class="btn btn-outline-warning">Upload File</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- Scripts -->
+        <?php require_once('../partials/scripts.php'); ?>
+
+    </body>
+    </html>
+<?php } ?>
