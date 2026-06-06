@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     session_start();
     include('../config/config.php');
     include('../config/checklogin.php');
@@ -20,8 +20,8 @@
                 <!-- Main Sidebar Container -->
                 <?php
                     require_once('../partials/std_sidebar.php');
-                    $id = $_SESSION['s_id'];
-                    $ret = "SELECT * FROM `lms_student` WHERE s_id = '$id' ";
+                    $s_id = $_SESSION['s_id'];
+                    $ret = "SELECT * FROM `lms_student` WHERE s_id = '$s_id' ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
@@ -58,7 +58,14 @@
                                                         } else {
                                                             // Default: show unpaid study materials for the course/unit
                                                             $id_esc = mysqli_real_escape_string($mysqli, $id);
-                                                            $ret = "SELECT  *  FROM  lms_study_material WHERE c_id = '$id_esc' && payment_status = 'Unpaid' ";
+                                                            $ret = "SELECT * 
+                                                                    FROM lms_study_material 
+                                                                    WHERE c_id = '$id_esc'
+                                                                    AND sm_number NOT IN (
+                                                                        SELECT sm_number
+                                                                        FROM lms_paid_study_materials
+                                                                        WHERE c_id = '$id_esc' AND s_id = '$s_id'
+                                                                    )";
                                                         }
                                                         $stmt = $mysqli->prepare($ret);
                                                         $stmt->execute(); //ok
