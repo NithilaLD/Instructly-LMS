@@ -1,6 +1,6 @@
 <?php
 
-namespace MartDevelopersIncAPI;
+namespace DSAPI;
 
 require '../vendor/autoload.php';
 
