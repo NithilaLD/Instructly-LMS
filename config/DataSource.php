@@ -1,15 +1,11 @@
 <?php
 
-/**
- * Copyright (C) 2020 MartDevelopers Inc - 
- *
- * Distributed under MIT license with an exception that,
- * you don’t have to include the full MIT License in your code.
- * In essense, you can use it on commercial software, modify and distribute free.
- * Though not mandatory, you are requested to attribute this URL in your code or website.
- */
-
 namespace MartDevelopersIncAPI;
+
+require '../vendor/autoload.php';
+
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
 /**
  * Generic datasource class for handling DB operations.
@@ -23,13 +19,13 @@ class DataSource
 
     // PHP 7.1.0 visibility modifiers are allowed for class constants.
     // when using above 7.1.0, declare the below constants as private
-    const HOST = 'localhost';
+    const HOST = null;
 
-    const USERNAME = 'root';
+    const USERNAME = null;
 
-    const PASSWORD = '';
+    const PASSWORD = null;
 
-    const DATABASENAME = 'lms';
+    const DATABASENAME = null;
 
     /**
      * @var \mysqli
@@ -59,7 +55,12 @@ class DataSource
      */
     public function getConnection()
     {
-        $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
+        $conn = new \mysqli(
+            $_ENV['DB_HOST'],
+            $_ENV['DB_USER'],
+            $_ENV['DB_PASS'],
+            $_ENV['DB_NAME']
+        );
 
         if (mysqli_connect_errno()) {
             trigger_error("Problem with connecting to database.");
