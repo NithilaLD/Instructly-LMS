@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include('../config/config.php');
 include('../config/checklogin.php');
@@ -202,7 +202,7 @@ if (isset($_GET['delete'])) {
 
 /* Bulk Import Instructors */
 
-use MartDevelopersIncAPI\DataSource;
+use DSAPI\DataSource;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 require_once('../config/DataSource.php');
