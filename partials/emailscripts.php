@@ -7,6 +7,9 @@
     use PhpOffice\PhpWord\IOFactory; // Word parser
     use thiagoalessio\TesseractOCR\TesseractOCR;
 
+    $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+    $dotenv->load();
+
     function addUniqueMediaItem(array &$bucket, mixed $value): void {
         $value = trim((string) $value);
         if ($value === '' || in_array($value, $bucket, true)) {
@@ -826,10 +829,6 @@
     // 2. Function to generate a short notification using Gemini LLM
     function generateNotification(string $fileContent, array $media, array $mediaAssets, string $moduleName, string $materialTitle): array {
         $apiKey = getenv('GEMINI_API_KEY');
-        if (!is_string($apiKey) || trim($apiKey) === '') {
-            $apiKey = 'AIzaSyD3gahujZ5Da8ytscrshXNOAujXLyZtJlU'; // Replace with your Gemini API key
-        }
-
         $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=' . urlencode($apiKey);
 
         $mediaSummary = buildMediaPromptSummary($media, $mediaAssets);
@@ -965,16 +964,16 @@
         try {
             // Server settings
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com'; // Replace with your SMTP server
+            $mail->Host       = $_ENV['SMTP_HOST'];
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'instructlylms@gmail.com';
-            $mail->Password   = 'pkrryqxojpodycts';
+            $mail->Username   = $_ENV['SMTP_USERNAME'];
+            $mail->Password   = $_ENV['SMTP_PASSWORD'];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            $mail->Port       = $_ENV['SMTP_PORT'];
             $mail->CharSet    = 'UTF-8';
             $mail->Encoding   = 'base64';
 
-            $mail->setFrom('instructlylms@gmail.com', 'Instructly LMS');
+            $mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
 
             $logoPath = '../public/sys_data/logo/' . $sys_logo;
             if (file_exists($logoPath)) {
@@ -1042,5 +1041,4 @@
             return false;
         }
     }
-
 ?>
