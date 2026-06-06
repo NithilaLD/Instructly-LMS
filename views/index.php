@@ -1,26 +1,21 @@
 <?php
-include('../config/config.php');
-/* Persist System Settings */
-$ret = "SELECT * FROM `lms_sys_setttings` ";
-$stmt = $mysqli->prepare($ret);
-$stmt->execute(); //ok
-$res = $stmt->get_result();
-while ($sys = $res->fetch_object()) {
+    include('../config/config.php');
+    /* Persist System Settings */
+    $ret = "SELECT * FROM `lms_sys_setttings` ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($sys = $res->fetch_object()) {
 ?>
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="keywords" content="LMS, Instruclty, Instruclty LMS, Learning Management System">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="author" content="Grayrids">
         <title><?php echo $sys->sys_name ?></title>
-
         <link rel="shortcut icon" href="../public/sys_data/logo/<?php echo $sys->sys_logo; ?>" type="image/png">
-
         <link rel="stylesheet" href="../public/css/bootstrap-4.5.0.min.css">
         <link rel="stylesheet" href="../public/css/animate.css">
         <link rel="stylesheet" href="../public/css/LineIcons.2.0.css">
@@ -31,9 +26,7 @@ while ($sys = $res->fetch_object()) {
         <link rel="stylesheet" href="../public/css/main.css">
         <link rel="stylesheet" href="../public/css/responsive.css">
     </head>
-
     <body>
-
         <header class="hero-area">
             <div class="overlay">
                 <span></span>
@@ -94,17 +87,12 @@ while ($sys = $res->fetch_object()) {
         <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #4B2EFF, #00C6FF); padding: 20px 0; text-align: center;">
             <p style="font-size: 18px; font-weight: 500; color: #fff;">© 2025 Instructly LMS. All Rights Reserved.</p>
         </footer>
-
-
         <a href="#" class="back-to-top">
             <i class="lni lni-chevron-up"></i>
         </a>
-
         <div id="preloader">
             <div class="loader" id="loader-1"></div>
         </div>
-
-
         <script src="../public/js/modernizr-3.7.1.min.js"></script>
         <script src="../public/plugins/jquery/jquery.min.js"></script>
         <script src="../public/js/popper.min.js"></script>
@@ -116,6 +104,7 @@ while ($sys = $res->fetch_object()) {
         <script src="../public/js/contact-form-script.js"></script>
         <script src="../public/js/main.js"></script>
     </body>
-
     </html>
-<?php } ?>
+<?php 
+    } 
+?>
