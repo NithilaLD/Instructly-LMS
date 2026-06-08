@@ -73,8 +73,7 @@ while ($sys = $res->fetch_object()) {
                     while ($row = $res->fetch_object()) {
                     ?>
                         <p class="login-box-msg">
-                            <span class="badge badge-success">Token : <?php echo $row->a_pwd; ?></span>
-                            <?php echo $row->a_email; ?>
+                            <span class="badge badge-success">Verification Successful</span>
                             <br>
                             Confirm Your Password
                         </p>
