@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include('../config/config.php');
 
@@ -73,8 +73,7 @@ while ($sys = $res->fetch_object()) {
                     while ($row = $res->fetch_object()) {
                     ?>
                         <p class="login-box-msg">
-                            <span class="badge badge-success">Token : <?php echo $row->i_pwd; ?></span>
-                            <?php echo $row->i_email; ?>
+                            <span class="badge badge-success">Verification Successful</span>
                             <br>
                             Confirm Your Password
                         </p>
