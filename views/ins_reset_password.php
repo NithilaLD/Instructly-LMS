@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include('../config/config.php');
 if (isset($_POST['Reset'])) {
@@ -13,14 +13,17 @@ if (isset($_POST['Reset'])) {
     if (!filter_var($_POST['i_email'], FILTER_VALIDATE_EMAIL)) {
         $err = 'Invalid Email';
     }
-    $checkEmail = mysqli_query($mysqli, "SELECT `i_email` FROM `lms_instructor` WHERE `i_email` = '" . $_POST['i_email'] . "'") or exit(mysqli_error($mysqli));
+    $checkEmailstmt = $mysqli->prepare("SELECT `i_email` FROM lms_instructor WHERE i_email = ?");
+    $checkEmailstmt->bind_param("s", $_POST['i_email']);
+    $checkEmailstmt->execute();
+    $checkEmail = $checkEmailstmt->get_result();
     if (mysqli_num_rows($checkEmail) > 0) {
 
         $n = date('y');
         $new_password = bin2hex(random_bytes($n));
         $query = "UPDATE lms_instructor SET  i_pwd =? WHERE i_email =?";
         $stmt = $mysqli->prepare($query);
-        $rc = $stmt->bind_param('ss', $new_password, $s_email);
+        $rc = $stmt->bind_param('ss', $new_password, $i_email);
         $stmt->execute();
 
         if ($stmt) {
