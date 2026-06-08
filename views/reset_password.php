@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include('../config/config.php');
 if (isset($_POST['Reset'])) {
@@ -13,7 +13,10 @@ if (isset($_POST['Reset'])) {
     if (!filter_var($_POST['a_email'], FILTER_VALIDATE_EMAIL)) {
         $err = 'Invalid Email';
     }
-    $checkEmail = mysqli_query($mysqli, "SELECT `a_email` FROM `lms_admin` WHERE `a_email` = '" . $_POST['a_email'] . "'") or exit(mysqli_error($mysqli));
+    $checkEmailstmt = $mysqli->prepare("SELECT `a_email` FROM lms_admin WHERE a_email = ?");
+    $checkEmailstmt->bind_param("s", $_POST['a_email']);
+    $checkEmailstmt->execute();
+    $checkEmail = $checkEmailstmt->get_result();
     if (mysqli_num_rows($checkEmail) > 0) {
 
         $n = date('y');
