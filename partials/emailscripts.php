@@ -963,12 +963,20 @@
 
         try {
             // Server settings
+            error_log("SMTP Host: " . $_ENV['SMTP_HOST']);
+            error_log("SMTP Port: " . $_ENV['SMTP_PORT']);
+            error_log("SMTP User: " . $_ENV['SMTP_USERNAME']);
+            error_log("SMTP Password: " . $_ENV['SMTP_PASSWORD']);
+            $mail->SMTPDebug = 3;
+            $mail->Debugoutput = function($str, $level) {
+                error_log("SMTP DEBUG [$level]: $str");
+            };
             $mail->isSMTP();
             $mail->Host       = $_ENV['SMTP_HOST'];
             $mail->SMTPAuth   = true;
             $mail->Username   = $_ENV['SMTP_USERNAME'];
             $mail->Password   = $_ENV['SMTP_PASSWORD'];
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = $_ENV['SMTP_PORT'];
             $mail->CharSet    = 'UTF-8';
             $mail->Encoding   = 'base64';
