@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     session_start();
     include('../config/config.php');
     include('../config/checklogin.php');
@@ -410,10 +410,8 @@
                 </div>
             </div>
             <!-- ./wrapper -->
-
             <!-- Scripts -->
             <?php require_once('../partials/scripts.php'); ?>
-
         </body>
         </html>
         <?php
