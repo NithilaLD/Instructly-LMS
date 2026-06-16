@@ -4,3 +4,4 @@
 2. WHY WHEN I CLICK LOGOUT AND THEN CLICK BROWSER BACK BUTOTON WITHOUT GOING TO LOGIN PAGE LIKE IT SHOWING THAT SESSION VALIDATION IS NOT ENOUGH.
 3. When delete clicked without deleting the record just add a deactivate status)bulk)
 4. Need to save timestamp for all actions and who did 
+5. for all pages which contain the same page backedn then when the relevant function is success show the message and after sometime refresh.
