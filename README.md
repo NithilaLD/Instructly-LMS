@@ -6,3 +6,5 @@
 4. Need to save timestamp for all actions and who did 
 5. for all pages which contain the same page backedn then when the relevant function is success show the message and after sometime refresh.
 6. need to show the side bar main page name in color heighlighted even when a sub page is accessed
+7. In courses page for each course add unit , allocate lecturer, enroll student buttons
+8. In units page import option from excel and material upload option for each row
