@@ -5,3 +5,4 @@
 3. When delete clicked without deleting the record just add a deactivate status)bulk)
 4. Need to save timestamp for all actions and who did 
 5. for all pages which contain the same page backedn then when the relevant function is success show the message and after sometime refresh.
+6. need to show the side bar main page name in color heighlighted even when a sub page is accessed
