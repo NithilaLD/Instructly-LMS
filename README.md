@@ -8,4 +8,3 @@
 6. need to show the side bar main page name in color heighlighted even when a sub page is accessed
 7. In courses page for each course add unit , allocate lecturer, enroll student buttons
 8. In units page import option from excel and material upload option for each row
-9. Course Transcript
