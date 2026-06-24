@@ -1,10 +1,6 @@
 # Instructly LMS
 
-1. Admin need to have a pge to add admins and verify users bulk at once(change db status column in users table value to verified when done)
-2. WHY WHEN I CLICK LOGOUT AND THEN CLICK BROWSER BACK BUTOTON WITHOUT GOING TO LOGIN PAGE LIKE IT SHOWING THAT SESSION VALIDATION IS NOT ENOUGH.
-3. When delete clicked without deleting the record just add a deactivate status)bulk)
-4. Need to save timestamp for all actions and who did 
-5. for all pages which contain the same page backedn then when the relevant function is success show the message and after sometime refresh.
-6. need to show the side bar main page name in color heighlighted even when a sub page is accessed
-7. In courses page for each course add unit , allocate lecturer, enroll student buttons
-8. In units page import option from excel and material upload option for each row
+1. Bulk Upload for every action
+2. Chnage every delete into reject
+3. for all pages which contain the same page backedn then when the relevant function is success show the message and after sometime refresh.
+4. Need to save timestamp for all actions and who did and need to page to display all
