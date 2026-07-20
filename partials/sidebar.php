@@ -32,7 +32,7 @@ use Mpdf\CssManager;
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="units.php" class="nav-link <?php echo isActive(['units.php'], $currentPage); ?>" style="color: #fff !important;">
+                    <a href="units.php" class="nav-link <?php echo isActive(['units.php', 'addunits.php'], $currentPage); ?>" style="color: #fff !important;">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>Units</p>
                     </a>
@@ -47,7 +47,7 @@ use Mpdf\CssManager;
                 <?php endif; ?>
                 <?php if ($role === 'instructor' || $role === 'admin'): ?>
                 <li class="nav-item">
-                    <a href="students.php" class="nav-link <?php echo isActive(['students.php', 'view_student.php'], $currentPage); ?>" style="color: #fff !important;">
+                    <a href="students.php" class="nav-link <?php echo isActive(['students.php', 'view_student.php', 'enrollments.php', 'unenrollments.php'], $currentPage); ?>" style="color: #fff !important;">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>Students</p>
                     </a>
@@ -78,7 +78,7 @@ use Mpdf\CssManager;
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="marks.php" class="nav-link <?php echo isActive(['marks.php'], $currentPage); ?>" style="color: #fff !important;">
+                    <a href="marks.php" class="nav-link <?php echo isActive(['marks.php', 'gradeunits.php', 'gradestudents.php'], $currentPage); ?>" style="color: #fff !important;">
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>Marks</p>
                     </a>
