@@ -240,7 +240,13 @@
                                                     <th>Unit Name</th>
                                                     <th>Course</th>
                                                     <th>Description</th>
+                                                <?php
+                                                    if ($role == 'admin' || $role == 'instructor') {
+                                                ?>
                                                     <th>Manage</th>
+                                                <?php
+                                                    }
+                                                ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -295,6 +301,9 @@
                                                         <td><?php echo $units->u_name; ?></td>
                                                         <td><?php echo $units->course_name; ?></td>
                                                         <td><textarea class="form-control" rows="1" readonly id="u_desc_<?php echo $units->u_id; ?>" name="u_desc_<?php echo $units->u_id; ?>"><?php echo $units->u_desc; ?></textarea></td>
+                                                    <?php
+                                                        if ($role == 'admin' || $role == 'instructor') {
+                                                    ?>
                                                         <td>
                                                             <a class="badge badge-outline-warning" data-toggle="modal" href="#update-<?php echo $units->u_id; ?>">
                                                                 <i class="fas fa-pencil-alt"></i>
@@ -344,6 +353,7 @@
                                                             </div>
                                                             <!-- End Update Modal -->
                                                         <?php
+                                                            }
                                                             if($role === 'admin')
                                                             {
                                                         ?>
