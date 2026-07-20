@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     include('../config/config.php');
     require_once('../config/audit.php');
     include('../config/checklogin.php');
@@ -156,6 +156,12 @@
                             <div class="container" style="padding-top: 10px !important;">
                                 <div class="text-right text-dark">
                                     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#add-modal">Add Unit</button>
+                                    <a class="btn btn-outline-warning" href="addunits.php">
+                                        Add Units Bulk
+                                    </a>
+                                    <a class="btn btn-outline-warning" href="removeunits.php">
+                                        Remove Units Bulk
+                                    </a>
                                 </div>
                             </div>
                             <hr>
