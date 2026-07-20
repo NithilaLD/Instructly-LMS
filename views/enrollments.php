@@ -51,6 +51,7 @@
                             // 3. Enroll the student
                             $insertEnrollment->bind_param('ii', $user_id, $course_id);
                             $insertEnrollment->execute();
+                            logAuditAction($mysqli, 'enroll_student', 'Student enrolled in a course', 'students', 'enrollment', $course_id . ':' . $user_id);
                             $successCount++;
                         } else {
                             $skippedCount++; // Already enrolled
