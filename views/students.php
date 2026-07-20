@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     include('../config/config.php');
     require_once('../config/audit.php');
     include('../config/checklogin.php');
@@ -545,6 +545,12 @@
                                 <div class="text-right text-dark" style="padding-top: 10px !important;">
                                     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#import-modal">Import Students Records</button>
                                     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#add-modal">Add Student</button>
+                                    <a class="btn btn-outline-warning" href="enrollments.php">
+                                        Enroll Students
+                                    </a>
+                                    <a class="btn btn-outline-warning" href="unenrollments.php">
+                                        Unenroll Students
+                                    </a>
                                 </div>
                             </div>
                             <hr>
