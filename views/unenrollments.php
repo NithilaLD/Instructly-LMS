@@ -19,13 +19,13 @@
             <button type='button' class='close' data-dismiss='alert'><span>&times;</span></button>
             </div>";
         }else{
-            $del=$mysqli->prepare("DELETE FROM enrollments WHERE s_id=? AND c_id=?");
+            $del=$mysqli->prepare("UPDATE enrollments SET status = 'inactive' WHERE s_id = ? AND c_id = ?");
             $ok=0;$skip=0;
             foreach($students as $sid){
                 $sid=(int)$sid;
                 $del->bind_param("ii",$sid,$course_id);
                 $del->execute();
-                if($del->affected_rows>0){$ok++;}else{$skip++;}
+                if($del->affected_rows>0){logAuditAction($mysqli, 'delete_enrollment', 'Enrollment deleted', 'students', 'enrollment', $course_id . ':' . $sid);$ok++;}else{$skip++;}
             }
             $del->close();
             $message="<div class='alert alert-success alert-dismissible fade show'>
