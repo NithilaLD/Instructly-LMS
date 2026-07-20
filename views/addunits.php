@@ -39,6 +39,7 @@
                         if(!empty($u_code) && !empty($u_name)){
                             $insertUnit->bind_param('iisss', $course_id, $user_id, $u_code, $u_name, $u_desc);
                             $insertUnit->execute();
+                            logAuditAction($mysqli, 'add_unit', 'Unit created', 'units', 'unit', $u_code);
                             $successCount++;
                         } else {
                             $errorCount++;
