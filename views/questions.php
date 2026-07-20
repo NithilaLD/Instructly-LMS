@@ -219,8 +219,8 @@
                     $_SESSION['flash_error'] = "A question with this code already exists.";
                 } else {
                     $stmt = $mysqli->prepare("
-                        INSERT INTO questions (q_code, u_id, i_id, q_details)
-                        VALUES (?, ?, ?, ?)
+                        INSERT INTO questions (q_code, u_id, i_id, q_details,status)
+                        VALUES (?, ?, ?, ?, 'added')
                     ");
                     $u_id_str = (string) $u_id;
                     $i_id_str = (string) $instructorId;
