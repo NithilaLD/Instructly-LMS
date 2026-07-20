@@ -139,6 +139,19 @@
                     <section class="content pt-3">
                         <div class="container-fluid">
                             <?php if ($role === 'admin' || $role === 'instructor') {
+                                ?>
+                            <div class="container" style="padding-top: 10px !important;">
+                                <div class="text-right text-dark">
+                                    <a class="btn btn-outline-warning" href="gradeunits.php">
+                                        Grade Units Bulk
+                                    </a>
+                                    <a class="btn btn-outline-warning" href="gradestudents.php">
+                                        Grade Students Bulk
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <?php
                                 } ?>
                             <div class="card">
                                 <div class="col-md-12">
