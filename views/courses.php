@@ -464,12 +464,6 @@
                                 <div class="text-right text-dark" style="padding-top: 10px !important;">
                                     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#import-modal">Import Courses Records </button>
                                     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#add-modal">Add Course</button>
-                                    <a class="btn btn-outline-warning" href="enrollments.php">
-                                        Enroll Students
-                                    </a>
-                                    <a class="btn btn-outline-warning" href="unenrollments.php">
-                                        Unenroll Students
-                                    </a>
                                 </div>
                             </div>
                             <?php
