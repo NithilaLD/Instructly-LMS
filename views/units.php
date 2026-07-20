@@ -159,9 +159,6 @@
                                     <a class="btn btn-outline-warning" href="addunits.php">
                                         Add Units Bulk
                                     </a>
-                                    <a class="btn btn-outline-warning" href="removeunits.php">
-                                        Remove Units Bulk
-                                    </a>
                                 </div>
                             </div>
                             <hr>
